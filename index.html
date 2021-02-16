@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet">
+        .container-calculadora{
+            border-radius: 10px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content:flex-start ;
+            text-align: center;
+            background-color: yellow;
+            width: 300px;
+            height: 380px;
+            margin: 0 auto;
+        }
+        .input-calculadora{
+            margin-top: 9px;
+            
+        }
+
+        .resultado{
+            color: white;
+            margin: 30px auto;
+            padding-top: 30px;
+            background-color: black;
+            width: 200px;
+            height: 90px;
+            border-radius: 10px;
+            border: 1px solid white;
+        }
+
+        input[type='button']{
+            border-radius: 15px;
+            outline: 0;
+            background-color:#a2a690;
+            border: 1px solid #ccc;
+            cursor:pointer;
+            box-shadow: 1px 1px 2px 1px;
+            width: 80px;
+            height: 30px;
+        }
+
+        input[type='button']:active{
+            background-color: #ccc;
+        }
+
+        h1{
+            width: 100%;
+            border-bottom: 3px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-calculadora">
+        <h1>Calculadora</h1>
+        
+        <div class="input-calculadora">
+          <input id='n1'type="text" placeholder="numero 1">
+        </div>
+        <div class="input-calculadora">
+            <select name="" id="select">
+                <option>+</option>
+                <option>-</option>
+                <option>*</option>
+                <option>/</option>
+            </select>
+        </div>
+        <div class="input-calculadora">
+            <input id='n2' type="text" placeholder="numero 2">
+          </div>
+        <div class="input-calculadora">
+            <input id='botao' type="button" value="Calcular">
+        </div>
+
+        <div id='resultado' class="resultado">
+            
+            
+        </div>
+
+    </div>
+
+    <script>
+        var botao = document.getElementById('botao')
+        var select = document.getElementById('select')
+        botao.addEventListener('click', ()=>{
+            var n1 = document.getElementById('n1').value
+            var n2 = document.getElementById('n2').value
+            var resultado = document.getElementById('resultado')
+            var cont= 0;
+            if(select.value=='+'){
+                cont = parseInt(n1)+parseInt(n2);
+                resultado.innerHTML=`Resultado: ${cont}`
+                
+                
+            }
+            else if(select.value=='-'){
+                cont = parseInt(n1)-parseInt(n2);
+                resultado.innerHTML=`Resultado: ${cont}`
+            }
+            else if(select.value=='*'&&n1>0){
+                cont = parseInt(n1)*parseInt(n2);
+                resultado.innerHTML=`Resultado: ${cont}`
+            }
+            else if(select.value=='/'&&n1>0&&n1>=n2){
+                cont = parseInt(n1)/parseInt(n2);
+                resultado.innerHTML=`Resultado: ${cont.toFixed(2)}`
+            }
+            
+                
+        })
+
+
+        
+
+        
+
+    </script>
+    
+</body>
+</html>
